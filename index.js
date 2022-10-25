@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require ('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -14,6 +15,8 @@ app.use(bodyParser.json());
 app.set('view engine','ejs');
 
 mongoose.connect('mongodb://localhost:27017/agendamento');
+
+const MONGODB_URI = 'mongodb+srv://'+process.env.MONGODB_USER+':'+process.env.MONGODB_PASSWORD+'@cluster0.pcrnxri.mongodb.net/'+process.env.MONGODB_DATABASE+'retryWrites=true&w=majority'
 
 
 app.get('/',(req,res)=>{
